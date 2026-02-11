@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Mustansar Iqbal — QA/SDET | Backend (.NET) | AI/LLM Integration" />
+  <title>Mustansar Iqbal — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070A12;
+      --panel: rgba(255,255,255,.06);
+      --text:#EAF0FF;
+      --muted: rgba(234,240,255,.72);
+      --muted2: rgba(234,240,255,.55);
+      --accent:#7C5CFF;
+      --accent2:#00D4FF;
+      --ok:#43F5A6;
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --radius2: 24px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    /* ✅ Fixed background (no broken / cut pieces) */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(900px 520px at 18% 10%, rgba(124,92,255,.20), transparent 65%),
+        radial-gradient(850px 520px at 82% 20%, rgba(0,212,255,.14), transparent 62%),
+        radial-gradient(900px 620px at 48% 112%, rgba(67,245,166,.10), transparent 60%),
+        radial-gradient(700px 420px at 50% 50%, rgba(255,255,255,.05), transparent 70%);
+      filter:saturate(1.05);
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background: linear-gradient(to bottom, rgba(7,10,18,.58), rgba(7,10,18,.92));
+      pointer-events:none;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 90px}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,10,18,.82), rgba(7,10,18,.35));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{max-width:var(--max); margin:0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 24px rgba(124,92,255,.55);
+    }
+    .nav{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{
+      color:var(--muted); font-weight:500; font-size:13.5px;
+      padding:8px 10px; border-radius:12px; border:1px solid transparent;
+      transition: .2s ease;
+    }
+    .nav a:hover{color:var(--text); background: rgba(255,255,255,.06); border-color:rgba(255,255,255,.08)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:14px; font-weight:600; font-size:13.5px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,212,255,.55));
+      border-color: rgba(255,255,255,.16);
+      box-shadow: 0 14px 40px rgba(124,92,255,.18);
+    }
+    .btn.primary:hover{filter:saturate(1.05); transform:translateY(-2px)}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px; padding:4px 8px; border-radius:10px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(234,240,255,.85);
+    }
+
+    .hero{padding:56px 0 18px}
+    .grid{display:grid; grid-template-columns: 1.35fr .65fr; gap:18px; align-items:stretch}
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card::before{
+      content:""; position:absolute; inset:-2px;
+      background: radial-gradient(600px 220px at 18% 0%, rgba(124,92,255,.22), transparent 55%),
+                  radial-gradient(640px 240px at 86% 10%, rgba(0,212,255,.16), transparent 58%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .card > *{position:relative}
+    .heroMain{padding:28px 24px 22px}
+
+    .pillRow{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(234,240,255,.86);
+      font-weight:600; font-size:12.5px;
+    }
+    .spark{width:8px;height:8px;border-radius:50%; background: var(--ok); box-shadow:0 0 20px rgba(67,245,166,.35)}
+    .title{font-size:42px; line-height:1.06; margin:10px 0 12px; letter-spacing:-.9px}
+    .subtitle{color: var(--muted); font-size:15.8px; line-height:1.65; max-width: 64ch; margin: 0 0 18px}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:8px}
+
+    .metaRow{display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; color:var(--muted2); font-size:13px}
+    .metaRow span{display:inline-flex; gap:8px; align-items:center}
+    .icon{width:16px; height:16px; opacity:.85; display:inline-block}
+
+    .heroSide{padding:18px}
+    .stat{
+      padding:16px; border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      margin-bottom:12px;
+    }
+    .stat .k{color:var(--muted2); font-size:12.5px; margin-bottom:6px}
+    .stat .v{font-weight:800; font-size:22px}
+    .stat .s{color:var(--muted); font-size:12.7px; margin-top:6px; line-height:1.45}
+
+    section{margin-top:22px}
+    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin: 18px 4px 10px}
+    .sectionHead h2{margin:0; font-size:18px; letter-spacing:-.2px}
+    .sectionHead p{margin:0; color:var(--muted2); font-size:13px}
+    .panel{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 18px;
+    }
+
+    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .tag{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:7px 10px; border-radius:999px;
+      font-size:12.5px; color: rgba(234,240,255,.85);
+    }
+
+    .cards{display:grid; gap:12px}
+    .item{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+    }
+    .item .role{font-weight:800}
+    .item .where{color:var(--muted2); font-size:12.8px; margin-top:4px}
+    .item .desc{color:var(--muted); font-size:13.2px; line-height:1.6; margin-top:8px}
+    .item ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13px; line-height:1.55}
+    .item li{margin:6px 0}
+
+    .projects{display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px}
+    .proj{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(255,255,255,.04));
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+      min-height: 182px;
+    }
+    .proj::after{
+      content:""; position:absolute; inset:-2px;
+      background: radial-gradient(420px 160px at 20% 0%, rgba(124,92,255,.14), transparent 60%),
+                  radial-gradient(420px 160px at 84% 10%, rgba(0,212,255,.10), transparent 62%);
+      opacity:.6; pointer-events:none;
+    }
+    .proj > *{position:relative}
+    .proj h3{margin:2px 0 8px; font-size:15px; letter-spacing:-.2px}
+    .proj p{margin:0 0 10px; color:var(--muted); font-size:12.9px; line-height:1.55}
+    .proj .chips{display:flex; flex-wrap:wrap; gap:7px}
+    .chip{
+      font-size:11.8px; color: rgba(234,240,255,.85);
+      padding:6px 9px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .proj .links{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .link{
+      color: rgba(234,240,255,.9);
+      font-weight:600; font-size:12.6px;
+      padding:8px 10px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      transition:.18s ease;
+    }
+    .link:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
+
+    footer{margin-top:18px; padding:12px 4px; color:var(--muted2); font-size:12.8px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .sep{height:1px; background: rgba(255,255,255,.10); margin:18px 0 0}
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .title{font-size:36px}
+    }
+    @media (max-width: 520px){
+      .title{font-size:32px}
+      .nav{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Mustansar Iqbal</span>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center">
+        <a class="btn" href="#contact" title="Contact">
+          <span class="kbd">Hire</span>
+          <span>Let’s talk</span>
+        </a>
+        <a class="btn primary" href="#" id="resumeLink" title="Resume (add your PDF link)">
+          <span>Resume</span>
+          <span style="opacity:.9">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="grid">
+        <div class="card">
+          <div class="heroMain">
+            <div class="pillRow">
+              <span class="pill">Backend (.NET)</span>
+              <span class="pill">QA / SDET</span>
+              <span class="pill">AI/LLM Integration</span>
+            </div>
+
+            <h1 class="title">I debug fast, trace deeply,<br/>and keep releases stable.</h1>
+
+            <p class="subtitle">
+              I work across <b>QA</b>, <b>backend engineering</b>, and <b>AI tools</b>.
+              My strongest skill is following a problem from the UI to APIs, logs, and CI,
+              until the real cause is clear.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary" href="#projects">See my work</a>
+              <a class="btn" href="#contact">Contact</a>
+              <a class="btn" href="#" id="githubLink">GitHub ↗</a>
+              <a class="btn" href="#" id="linkedinLink">LinkedIn ↗</a>
+            </div>
+
+            <div class="metaRow">
+              <span>
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" fill="rgba(234,240,255,.75)"/></svg>
+                Pakistan • Remote global
+              </span>
+              <span>
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 6.5A3.5 3.5 0 0 1 6.5 3h11A3.5 3.5 0 0 1 21 6.5v11a3.5 3.5 0 0 1-3.5 3.5h-11A3.5 3.5 0 0 1 3 17.5v-11Zm3.7.2a.9.9 0 0 0-1.4 1.1l6.1 7.3a1.1 1.1 0 0 0 1.7 0l6.1-7.3a.9.9 0 0 0-1.4-1.1L12 13.6 6.7 6.7Z" fill="rgba(234,240,255,.75)"/></svg>
+                mustansariqbal45@gmail.com
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="heroSide">
+          <div class="stat">
+            <div class="k">What I’m good at</div>
+            <div class="v">Root-cause analysis</div>
+            <div class="s">I don’t stop at symptoms. I trace issues through logs, APIs, and CI until it makes sense.</div>
+          </div>
+          <div class="stat">
+            <div class="k">How I work</div>
+            <div class="v">High signal</div>
+            <div class="s">Automation, CI reports, and AI tools that reduce noise and save time.</div>
+          </div>
+          <div class="stat">
+            <div class="k">Availability</div>
+            <div class="v">APAC / US Hours</div>
+            <div class="s">Comfortable working with teams across time zones.</div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="sectionHead">
+        <h2>About</h2>
+        <p>Backend + QA + AI tools (practical work)</p>
+      </div>
+
+      <div class="panel">
+        <div class="cols">
+          <div>
+            <p style="margin:0; color:var(--muted); line-height:1.7; font-size:13.6px">
+              I started with Python automation and early ML experiments (TensorFlow).
+              Later I worked as a .NET backend developer, and that experience still helps me a lot in QA:
+              I understand system behavior, edge cases, integrations, and what breaks in production.
+              <br><br>
+              Today I work in QA/SDET roles where I build stable automation, debug failures quickly, and improve CI signal.
+              I also build AI-assisted tools (LLM/MCP workflows) that help with support and log triage.
+            </p>
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tag">Problem solver</span>
+              <span class="tag">Debugging & tracing</span>
+              <span class="tag">Exploratory testing</span>
+              <span class="tag">Automation frameworks</span>
+              <span class="tag">CI reliability</span>
+              <span class="tag">LLM/MCP tools</span>
+            </div>
+
+            <div style="margin-top:14px; border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:14px; background:rgba(0,0,0,.18)">
+              <div style="font-weight:800; margin-bottom:6px">Primary email</div>
+              <div style="color:var(--muted); font-size:13.2px; line-height:1.6">
+                mustansariqbal45@gmail.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="sectionHead">
+        <h2>Skills</h2>
+        <p>Useful, real-world skills (no fluff)</p>
+      </div>
+
+      <div class="panel">
+        <div class="cols">
+          <div>
+            <div style="font-weight:800; margin-bottom:10px">QA / Testing</div>
+            <div class="tags">
+              <span class="tag">Exploratory testing</span>
+              <span class="tag">Test planning & scenarios</span>
+              <span class="tag">Regression testing</span>
+              <span class="tag">Bug reporting (clear repro)</span>
+              <span class="tag">Root-cause analysis</span>
+              <span class="tag">Browser DevTools (Network/Console)</span>
+            </div>
+
+            <div style="font-weight:800; margin:16px 0 10px">Automation</div>
+            <div class="tags">
+              <span class="tag">Selenium</span>
+              <span class="tag">Cypress</span>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Framework design</span>
+            </div>
+
+            <div style="font-weight:800; margin:16px 0 10px">CI/CD</div>
+            <div class="tags">
+              <span class="tag">Jenkins</span>
+              <span class="tag">Pipeline troubleshooting</span>
+              <span class="tag">Failure classification</span>
+              <span class="tag">Reporting</span>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-weight:800; margin-bottom:10px">Backend / Data</div>
+            <div class="tags">
+              <span class="tag">.NET / VB.NET</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Postman</span>
+              <span class="tag">pandas (data validation)</span>
+              <span class="tag">Excel/CSV pipelines</span>
+              <span class="tag">SQL (basic)</span>
+            </div>
+
+            <div style="font-weight:800; margin:16px 0 10px">AI / LLM</div>
+            <div class="tags">
+              <span class="tag">LLM integration</span>
+              <span class="tag">MCP workflows</span>
+              <span class="tag">AI-assisted log triage</span>
+              <span class="tag">Testing LLM outputs</span>
+              <span class="tag">TensorFlow (training exposure)</span>
+            </div>
+
+            <div style="font-weight:800; margin:16px 0 10px">Strength</div>
+            <div class="tags">
+              <span class="tag">Keen observer</span>
+              <span class="tag">Tracing complex bugs</span>
+              <span class="tag">System thinking</span>
+              <span class="tag">Clear communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (no timeline / no dates) -->
+    <section id="experience">
+      <div class="sectionHead">
+        <h2>Experience</h2>
+        <p>Backend + QA + AI tooling (combined)</p>
+      </div>
+
+      <div class="cards">
+        <div class="item">
+          <div class="role">QA / SDET (Web + API Systems)</div>
+          <div class="where">Manual + automation + release confidence</div>
+          <div class="desc">
+            I own test planning and execution for new changes, do deep exploratory testing, and maintain automation suites that catch regressions without creating noise.
+          </div>
+          <ul>
+            <li>Write clear test scenarios and test data for new features and risky changes.</li>
+            <li>Use DevTools + logs to debug issues and explain the real cause to engineers.</li>
+            <li>Maintain Selenium/Cypress suites and keep them stable (reduce flakiness).</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="role">Backend Development (.NET / VB.NET)</div>
+          <div class="where">Integrations • workflows • production debugging</div>
+          <div class="desc">
+            Backend experience helps me test better: I understand data flow, edge cases, and failure modes that are usually missed.
+          </div>
+          <ul>
+            <li>Worked on backend logic and integration-heavy workflows.</li>
+            <li>Debugged production issues using logs and reproduced problems in lower environments.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="role">AI / LLM Tools (Support + CI Triage)</div>
+          <div class="where">MCP-integrated workflows</div>
+          <div class="desc">
+            Built small AI tools that save time: a chatbot for support/event info and a Jenkins log triage flow that produces clean failure reports.
+          </div>
+          <ul>
+            <li>LLM support assistant with MCP for controlled tool access and structured output.</li>
+            <li>Jenkins ↔ MCP workflow that summarizes failures and highlights likely reasons.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="sectionHead">
+        <h2>Work</h2>
+        <p>AI/LLM + QA automation + data pipelines</p>
+      </div>
+
+      <div class="projects">
+        <div class="proj">
+          <h3>LLM Support Assistant (MCP Integrated)</h3>
+          <p>Chatbot that helps users and provides structured event/product information using MCP-controlled tool calls.</p>
+          <div class="chips">
+            <span class="chip">LLM</span>
+            <span class="chip">MCP</span>
+            <span class="chip">Structured output</span>
+            <span class="chip">Guardrails</span>
+          </div>
+          <div class="links">
+            <a class="link" href="#" title="Add repo link">Repo ↗</a>
+            <a class="link" href="#contact">Ask for details ↗</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>CI Log Triage (Jenkins + MCP)</h3>
+          <p>Reads Jenkins logs/artifacts and generates a clean report: what failed, likely reason, and next steps.</p>
+          <div class="chips">
+            <span class="chip">Jenkins</span>
+            <span class="chip">MCP</span>
+            <span class="chip">Failure classification</span>
+            <span class="chip">Reporting</span>
+          </div>
+          <div class="links">
+            <a class="link" href="#" title="Add case study link">Case study ↗</a>
+            <a class="link" href="#contact">Contact ↗</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Regression Automation (Web + API)</h3>
+          <p>Built and maintained Selenium/Cypress suites focused on stability, high-signal checks, and fast debugging.</p>
+          <div class="chips">
+            <span class="chip">Selenium</span>
+            <span class="chip">Cypress</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">RCA</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/mustansariqbal45" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a class="link" href="#contact">Contact ↗</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Computer Vision Safety Detection</h3>
+          <p>TensorFlow model training project to detect seatbelt and mobile phone usage while driving (prototype).</p>
+          <div class="chips">
+            <span class="chip">TensorFlow</span>
+            <span class="chip">Python</span>
+            <span class="chip">Model training</span>
+          </div>
+          <div class="links">
+            <a class="link" href="#contact">Ask details ↗</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Scrape → Clean → Upload Pipeline</h3>
+          <p>Python + Selenium scraping with pandas transformations to produce clean Excel/CSV for Shopify/WordPress imports.</p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Selenium</span>
+            <span class="chip">pandas</span>
+            <span class="chip">Excel/CSV</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/mustansariqbal45" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <h3>Backend Debugging & Integration Work</h3>
+          <p>Worked on .NET backend workflows and integrations; comfortable reproducing production issues using logs and traces.</p>
+          <div class="chips">
+            <span class="chip">.NET / VB.NET</span>
+            <span class="chip">APIs</span>
+            <span class="chip">Logs</span>
+            <span class="chip">RCA</span>
+          </div>
+          <div class="links">
+            <a class="link" href="#contact">Discuss ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px" class="panel">
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+          <div>
+            <div style="font-weight:900; font-size:14px">Want it even cleaner?</div>
+            <div style="color:var(--muted); font-size:13px; margin-top:4px">
+              Replace “Repo/Case study” with real links for each project and it’ll look premium.
+            </div>
+          </div>
+          <a class="btn primary" href="#contact">Send project links</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <p>Quick and simple</p>
+      </div>
+
+      <div class="panel">
+        <div class="cols">
+          <div>
+            <div style="font-weight:900; font-size:15px">Open to remote roles</div>
+            <p style="margin:10px 0 0; color:var(--muted); line-height:1.7; font-size:13.6px">
+              If you need someone who can debug fast, keep testing practical, and improve CI reliability,
+              I’m happy to talk.
+            </p>
+
+            <div class="tags" style="margin-top:12px">
+              <span class="tag">QA / SDET</span>
+              <span class="tag">Backend understanding</span>
+              <span class="tag">AI tooling</span>
+              <span class="tag">Remote APAC</span>
+            </div>
+          </div>
+
+          <div style="display:grid; gap:10px">
+            <a class="btn" href="mailto:mustansariqbal45@gmail.com">Email: mustansariqbal45@gmail.com</a>
+            <a class="btn" id="linkedinLink2" href="#" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a class="btn" id="githubLink2" href="#" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a class="btn" id="calLink" href="#" target="_blank" rel="noreferrer" title="Optional: add Calendly">Schedule a chat ↗</a>
+          </div>
+        </div>
+
+        <div class="sep"></div>
+        <footer>
+          <div>© <span id="year"></span> Mustansar Iqbal • Portfolio</div>
+          <div style="color:var(--muted2)">Dark theme • Clean layout • Fast load</div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ✅ Real links updated
+    const LINKS = {
+      github: "https://github.com/mustansariqbal45",
+      linkedin: "https://www.linkedin.com/in/mustansar-iqbal-hamza/",
+      resume: "#",          // add your resume PDF link here if you want
+      calendly: "https://calendar.app.google/SMqqa2ryo9aC6rJW7"         // optional
+    };
+
+    const set = (id, url) => { const el = document.getElementById(id); if(el && url) el.href = url; };
+    set("githubLink", LINKS.github);
+    set("githubLink2", LINKS.github);
+    set("linkedinLink", LINKS.linkedin);
+    set("linkedinLink2", LINKS.linkedin);
+    set("resumeLink", LINKS.resume);
+    set("calLink", LINKS.calendly);
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
